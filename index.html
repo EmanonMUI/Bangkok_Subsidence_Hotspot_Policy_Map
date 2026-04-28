@@ -72,6 +72,38 @@
                     font-family: sans-serif; box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
                 }
                 .manual-box { 
+    position: fixed; 
+    top: 10px; 
+    left: 50px; 
+    /* ปรับให้กว้างพอดีเนื้อหาแต่ไม่เกิน 480px และไม่เกิน 85% ของหน้าจอ */
+    width: auto;
+    max-width: 480px;
+    min-width: 250px;
+    
+    /* ปรับความสูงให้พอดีกับข้อความที่กางออกมา (fit-content) แต่ไม่เกิน 60% ของจอเพื่อไม่ให้ทับข้างล่าง */
+    height: auto;
+    max-height: 60vh; 
+    
+    border: 2px solid #2980b9; 
+    background-color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-family: sans-serif;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+    z-index: 9999;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    /* Scroll Shadow: เงาบอกสถานะการเลื่อน */
+    background: 
+        linear-gradient(white 30%, rgba(255,255,255,0)),
+        linear-gradient(rgba(255,255,255,0), white 70%) 0 100%,
+        radial-gradient(farthest-side at 50% 0, rgba(0,0,0,0.1), rgba(0,0,0,0)),
+        radial-gradient(farthest-side at 50% 100%, rgba(0,0,0,0.1), rgba(0,0,0,0)) 0 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+    background-attachment: local, local, scroll, scroll;
+
                     position: fixed; top: 10px; left: 50px; width: 480px; border: 2px solid #2980b9; 
                     max-height: 85vh; overflow-y: auto; z-index:9999;
                     /* Scroll Shadow Effect */
