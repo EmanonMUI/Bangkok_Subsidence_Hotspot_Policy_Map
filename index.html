@@ -212,44 +212,58 @@
             </div>
             
     
-            <div class="folium-map" id="map_d49bdf5707de88909c2aafbde385d2bc" ></div>
-<div style="position: fixed; bottom: 70px; left: 20px; z-index: 9999;">
-        <button onclick="toggleStationLabels()" 
-                style="background: rgba(255,255,255,0.96); 
-                       border: 1px solid #bdc3c7; 
-                       border-radius: 20px; 
-                       padding: 8px 15px; 
-                       font-size: 12px; 
-                       cursor: pointer; 
-                       box-shadow: 2px 2px 5px rgba(0,0,0,0.1); 
-                       font-weight: bold; 
-                       color: #2c3e50; 
-                       display: flex; 
-                       align-items: center; 
-                       gap: 5px;">
-            🏷️ <span id="label-status">Hide label</span>
-        </button>
+            <style>
+        /* CSS สำหรับวาดปุ่ม Switch สไตล์ iOS */
+        .custom-switch { position: relative; display: inline-block; width: 40px; height: 20px; margin: 0; }
+        .custom-switch input { opacity: 0; width: 0; height: 0; }
+        .switch-slider { 
+            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; 
+            background-color: #ccc; transition: .4s; border-radius: 20px; 
+        }
+        .switch-slider:before { 
+            position: absolute; content: ""; height: 16px; width: 16px; left: 2px; bottom: 2px; 
+            background-color: white; transition: .4s; border-radius: 50%; 
+        }
+        /* เมื่อเปิดสวิตช์ (ON) ให้เป็นสีเขียว */
+        input:checked + .switch-slider { background-color: #2ecc71; }
+        input:checked + .switch-slider:before { transform: translateX(20px); }
+    </style>
+
+    <div style="position: fixed; bottom: 70px; left: 20px; z-index: 9999; 
+                background: rgba(255,255,255,0.96); border: 1px solid #bdc3c7; 
+                border-radius: 20px; padding: 8px 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); 
+                display: flex; align-items: center; gap: 10px; font-family: sans-serif; font-size: 12px; font-weight: bold; color: #2c3e50;">
+        
+        <span>🏷️ Station Labels</span>
+        
+        <label class="custom-switch">
+            <input type="checkbox" id="labelToggle" checked onchange="toggleStationLabels()">
+            <span class="switch-slider"></span>
+        </label>
+        
+        <span id="switch-status" style="width: 25px; color: #27ae60; text-align: left;">ON</span>
     </div>
 
     <script>
         function toggleStationLabels() {
-            // ดึงองค์ประกอบทั้งหมดที่มี Class .station-label
+            var isChecked = document.getElementById('labelToggle').checked;
             var labels = document.querySelectorAll('.station-label');
-            var statusText = document.getElementById('label-status');
+            var statusText = document.getElementById('switch-status');
             
             labels.forEach(function(label) {
-                // ถ้าปัจจุบันซ่อนอยู่ให้แสดง ถ้าแสดงอยู่ให้ซ่อน
-                if (label.style.display === 'none') {
-                    label.style.display = 'block';
-                    statusText.innerText = "Hide label";
-                } else {
-                    label.style.display = 'none';
-                    statusText.innerText = "Show label";
-                }
+                label.style.display = isChecked ? 'block' : 'none';
             });
+            
+            if (isChecked) {
+                statusText.innerText = "ON";
+                statusText.style.color = "#27ae60";
+            } else {
+                statusText.innerText = "OFF";
+                statusText.style.color = "#e74c3c";
+            }
         }
     </script>
-  
+ 
                             
 </body>
 <script>
