@@ -75,9 +75,9 @@
     position: fixed; 
     top: 10px; 
     left: 50px; 
-    /* ปรับให้กว้างพอดีเนื้อหาแต่ไม่เกิน 480px และไม่เกิน 85% ของหน้าจอ */
+    /* ปรับให้กว้างพอดีเนื้อหาแต่ไม่เกิน 450px และไม่เกิน 85% ของหน้าจอ */
     width: auto;
-    max-width: 480px;
+    max-width: 450px;
     min-width: 250px;
     
     /* ปรับความสูงให้พอดีกับข้อความที่กางออกมา (fit-content) แต่ไม่เกิน 60% ของจอเพื่อไม่ให้ทับข้างล่าง */
@@ -96,7 +96,7 @@
 
     /* Scroll Shadow: เงาบอกสถานะการเลื่อน */
     background: 
-        linear-gradient(white 30%, rgba(255,255,255,0)),
+        linear-gradient(white 90%, rgba(255,255,255,0)),
         linear-gradient(rgba(255,255,255,0), white 70%) 0 100%,
         radial-gradient(farthest-side at 50% 0, rgba(0,0,0,0.1), rgba(0,0,0,0)),
         radial-gradient(farthest-side at 50% 100%, rgba(0,0,0,0.1), rgba(0,0,0,0)) 0 100%;
@@ -125,7 +125,7 @@
                 @media (max-width: 768px) {
                     .manual-box { 
         left: 10px; 
-        right: 10px; /* ยืดให้เต็มหน้าจอซ้าย-ขวา */
+        right: 5px; /* ยืดให้เต็มหน้าจอซ้าย-ขวา */
         width: auto;
         max-width: none;
         max-height: 45vh; /* ในมือถือให้สูงแค่เกือบครึ่งจอพอ จะได้ไม่บัง Legend */
@@ -144,7 +144,7 @@
                     .legend { display: none !important; }
                     .mobile-legend { 
                         display: flex !important; flex-direction: column; align-items: center; justify-content: space-between;
-                        position: fixed; right: 10px; top: 10px; height: 40vh; width: 35px; 
+                        position: fixed; right: 10px; top: 15px; height: 40vh; width: 35px; 
                         background: rgba(255,255,255,0.9); border-radius: 5px; border: 1px solid #ccc; z-index: 9999;
                         padding: 10px 0; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); font-family: sans-serif; font-size: 9px; font-weight: bold; color: #333;
                     }
