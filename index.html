@@ -6,7 +6,7 @@
     
     <title>Bangkok Subsidence Hotspot Map</title>
     <meta property="og:title" content="แผนที่แนวโน้มการทรุดตัว กทม. (Subsidence Hotspot Map)" />
-    <meta property="og:description" content="Interactive Map วิเคราะห์การทรุดตัวของแผ่นดินด้วย InSAR และ Machine Learning (ป" />
+    <meta property="og:description" content="Interactive Map วิเคราะห์การทรุดตัวของแผ่นดินด้วย InSAR และ Machine Learning (ปี 2557-2567)" />
     <meta property="og:image" content="https://kamonwan-lab.github.io/Bangkok_Subsidence_Hotspot_Policy_Map/preview-cover.jpg" />
     <meta property="og:url" content="https://kamonwan-lab.github.io/Bangkok_Subsidence_Hotspot_Policy_Map/" />
     <meta property="og:type" content="website" />
@@ -25,7 +25,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_5c3484fc4216cbe395dcb47336b41346 {
+                #map_d49bdf5707de88909c2aafbde385d2bc {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -71,42 +71,22 @@
                     background: rgba(255,255,255,0.96); padding: 12px; border-radius: 8px; 
                     font-family: sans-serif; box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
                 }
-                
                 .manual-box { 
-                    position: fixed; 
-                    top: 10px; 
-                    left: 50px; 
-                    /* ปรับให้กว้างพอดีเนื้อหาแต่ไม่เกิน 480px และไม่เกิน 85% ของหน้าจอ */
-                    width: auto;
-                    max-width: 480px;
-                    min-width: 250px;
-                    
-                    /* ปรับความสูงให้พอดีกับข้อความที่กางออกมา (fit-content) แต่ไม่เกิน 60% ของจอเพื่อไม่ให้ทับข้างล่าง */
-                    height: auto;
-                    max-height: 60vh; 
-                    
-                    border: 2px solid #2980b9; 
-                    background-color: white;
-                    padding: 12px;
-                    border-radius: 8px;
-                    font-family: sans-serif;
-                    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
-                    z-index: 9999;
-                    overflow-y: auto;
-                    overflow-x: hidden;
-
-                    /* Scroll Shadow: เงาบอกสถานะการเลื่อน */
+                    position: fixed; top: 10px; left: 50px; width: 480px; border: 2px solid #2980b9; 
+                    max-height: 85vh; overflow-y: auto; z-index:9999;
+                    /* Scroll Shadow Effect */
                     background: 
                         linear-gradient(white 30%, rgba(255,255,255,0)),
                         linear-gradient(rgba(255,255,255,0), white 70%) 0 100%,
-                        radial-gradient(farthest-side at 50% 0, rgba(0,0,0,0.1), rgba(0,0,0,0)),
-                        radial-gradient(farthest-side at 50% 100%, rgba(0,0,0,0.1), rgba(0,0,0,0)) 0 100%;
+                        radial-gradient(farthest-side at 50% 0, rgba(0,0,0,0.2), rgba(0,0,0,0)),
+                        radial-gradient(farthest-side at 50% 100%, rgba(0,0,0,0.2), rgba(0,0,0,0)) 0 100%;
                     background-repeat: no-repeat;
+                    background-color: white;
                     background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
                     background-attachment: local, local, scroll, scroll;
                 }
-
-                /* ปรับแต่ง Scrollbar */
+                
+                /* Custom Scrollbar */
                 .manual-box::-webkit-scrollbar {
                     width: 6px;
                 }
@@ -138,11 +118,26 @@
 
                 @media (max-width: 768px) {
                     .manual-box { 
+                        position: fixed; 
+                        top: 10px; 
                         left: 10px; 
-                        right: 10px; /* ยืดให้เต็มหน้าจอซ้าย-ขวา */
-                        width: auto;
+                        right: 10px; 
+                        width: auto; 
                         max-width: none;
-                        max-height: 45vh; /* ในมือถือให้สูงแค่เกือบครึ่งจอพอ จะได้ไม่บัง Legend */
+                        max-height: 50vh; 
+                        font-size: 10px;
+                        border: 2px solid #2980b9;
+                        z-index: 9999;
+                        /* Scroll Shadow Effect for Mobile */
+                        background: 
+                            linear-gradient(white 30%, rgba(255,255,255,0)),
+                            linear-gradient(rgba(255,255,255,0), white 70%) 0 100%,
+                            radial-gradient(farthest-side at 50% 0, rgba(0,0,0,0.2), rgba(0,0,0,0)),
+                            radial-gradient(farthest-side at 50% 100%, rgba(0,0,0,0.2), rgba(0,0,0,0)) 0 100%;
+                        background-repeat: no-repeat;
+                        background-color: white;
+                        background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+                        background-attachment: local, local, scroll, scroll;
                     }
                     
                     .watermark-toggle { bottom: 20px; left: 10px; }
@@ -175,9 +170,9 @@
             
     
             <div class="custom-panel manual-box">
-                <details>
+                <details open>
                     <summary style="font-weight:bold; cursor:pointer; color:#2980b9; font-size:14px;">🔽 คู่มือ ทฤษฎี และการตีความ (Manual & Defense)</summary>
-                    <div style="text-align: center; color: #7f8c8d; font-size: 9px; padding-bottom: 5px;">
+                    <div style="text-align: center; color: #7f8c8d; font-size: 9px; padding: 5px 0;">
                         ⬇️ เลื่อนลงเพื่อดูเนื้อหาเพิ่มเติม
                     </div>
                     <div style="font-size:11px; margin-top:10px; line-height:1.6; color:#333;">
@@ -187,38 +182,34 @@
                         <hr>
                         <b>2. ข้อจำกัดโมเดล (Model Limitations):</b><br>
                         • <b>Concept Drift:</b> เนื่องจากพฤติกรรมการอัดตัวคายน้ำเปลี่ยนแปลงตามเวลา<br>
-                        • <b>Omitted Variable Bias:</b> โมเดลขาดตัวแปรแฝง เช่น ปริมาณสูบน้ำเถื่อน และการมีการบ่อขึ้น<br>
+                        • <b>Omitted Variable Bias:</b> โมเดลขาดตัวแปรแฝง เช่น ปริมาณสูบน้ำเถื่อน และการมีประสิทธิภาพของระบบบำรุงรักษา<br>
                         <hr>
                         <b>3. ทฤษฎีวิศวกรรมและการแปลผล (Engineering Anomaly):</b><br>
-                        • <b>ที่มาของข้อมูล:</b> ตัวเลขเฉลี่ยรายปีเป็นการคำนวณย้อนกลับจากสะสม 10 ปี<br>
+                        • <b>ที่มาของข้อมูล:</b> ตัวเลขเฉลี่ยรายปีเป็นการคำนวณย้อนกลับจากความเปลี่ยนแปลงสะสม<br>
                         • <b>พื้นที่ชั้นใน:</b> ทรุดตัวชะลอลงที่ 0-10 มม./ปี (เทียบเท่าสะสม 0-100 มม.)<br>
-                        • <b>Hotspot:</b> พบการทรุดตัวสะสมอย่างรุนแรงในรอบ 10 ปี (พ.ศ. 2557-2567) บริเวณชานเมือง<br>
-                        • <b>กรณีศึกษา (สถานี 32001 ประเวศ):</b> ทรุดตัวจริงสูงถึง -177.5 มม. แต่โมเดลทายได้ -142 มม.<br>
-                        <hr>
+                        • <b>Hotspot:</b> พบการทรุดตัวสะสมอย่างรุนแรงในรอบ 10 ปี (พ.ศ. 2557-2567) บริเวณชานเมืองตะวันออก ดินแดนพระนคร<br>
+                        • <b>กรณีศึกษา (สถานี 32001 ประเวศ):</b> ทรุดตัวจริงสูงถึง -177.5 มม. แต่โมเดลคาดคะเนเพียง -62.5 มม.<br>
                         <hr>
                         <b>4. เกณฑ์เตือนภัย (Thresholds):</b><br>
-                        แผนที่นี้ใช้การแสดงผล 2 รูปแบบซ้อนทับกัน (Dual-Layer Visualization) เพื่ออธิบายความเสี่ยง
-
+                        แผนที่นี้ใช้การแสดงผล 2 รูปแบบซ้อนทับกัน (Dual-Layer Visualization) เพื่ออธิบายความเสี่ยงจากการทรุดตัว<br><br>
                         📍 <b>จุดพิกัด (Point Marker - เกณฑ์ตายตัว):</b> บ่งบอกความเสี่ยงเฉพาะจุด<br>
-                        <span style="color:#2ecc71;">●</span> 0-50 มม. (ปลอดภัย) | <span style="color:#d35400;">●</span> <b>51-100 มม. (เฝ้าระวัง)</b> | <span style="color:#c0392b;">●</span> <b>>100 มม. (อันตราย)</b>
+                        <span style="color:#2ecc71;">●</span> 0-50 มม. (ปลอดภัย) | <span style="color:#f39c12;">●</span> <b>51-100 มม. (เฝ้าระวัง)</b> | <span style="color:#c0392b;">●</span> <b>>100 มม. (เสี่ยงสูง)</b><br>
                         (เสี่ยงต่อ Differential Settlement ของท่อประปา - <i>อ้างอิง: เฉลิมพล, 2567</i>)<br><br>
-
-                        🔥 <b>รังสีความร้อน (HeatMap - เกณฑ์สัมพัทธ์):</b> บ่งบอกความรุนแรงเชิงพื้นที่สัมพัทธ์<br>
-
+                        🔥 <b>รังสีความร้อน (HeatMap - เกณฑ์สัมพัทธ์):</b> บ่งบอกความรุนแรงเชิงพื้นที่ (ค่าใกล้เคียงกันสูงสุดในแต่ละพื้นที่)<br><br>
                         💡 <b>หมุดสีแดง แต่รังสีเป็นสีฟ้า/เขียว หมายความว่าอย่างไร?:</b><br>
-                        หมายถึง สถานีนั้นทรุดตัวจนถึงเกณฑ์อันตรายแล้ว (>100 มม.) แต่ยังไม่ใช่บริเวณที่มีความเข้มข้นที่สุด
+                        หมายถึง สถานีนั้นทรุดตัวจนถึงเกณฑ์อันตรายแล้ว (>100 มม.) แต่ยังไม่ใช่ "ร้อนแรงที่สุด" ในท้องถิ่น<br>
                         <hr>
                         <b>5. ความหมายของ Anomaly Tags (Best vs Worst):</b><br>
-                        • 🌟 <b>Best Fit (Error < 5 มม.):</b> สถานีที่ทายแม่นยำที่สุด สะท้อนว่าตัวแปรที่ใช้เป็นตัวสำคัญ<br>
-                        • 🚨 <b>Worst Anomaly (Error > 35 มม.):</b> สถานีที่ทายคลาดเคลื่อน ชี้ให้เห็นถึงอิทธิพลของตัวแปรแฝง<br>
-                        • <b>ทำไม Best/Worst ของ RF และ XGB ถึงเป็นคนละสถานีกัน?:</b> <span style="color:#27ae60;"><b>Random Forest (Bagging)</b></span> และ <span style="color:#e74c3c;"><b>XGBoost (Boosting)</b></span> มีกลยุทธ์แตกต่าง
+                        • 🌟 <b>Best Fit (Error < 5 มม.):</b> สถานีที่ทายแม่นยำที่สุด สะท้อนว่าตัวแปรที่ใช้อธิบายการทรุดตัวได้ดี<br>
+                        • 🚨 <b>Worst Anomaly (Error > 35 มม.):</b> สถานีที่ทายคลาดเคลื่อน ชี้ให้เห็นถึงอิทธิพลของตัวแปรแฝงที่ชุมนุม<br>
+                        • <b>ทำไม Best/Worst ของ RF และ XGB ถึงเป็นคนละสถานีกัน?:</b> <span style="color:#27ae60;"><b>Random Forest (Bagging)</b></span> ดีที่แบ่งการตัดสินใจเท่า ๆ กัน ขณะที่ <b>XGBoost (Boosting)</b> ปรับปรุงจากข้อผิดพลาดก่อนหน้า<br>
                         <hr>
                         <b>6. เอกสารอ้างอิงสำคัญ (Key References):</b><br>
                         <ul style='margin-top:2px; padding-left:15px; font-size:10px; line-height:1.4;'>
                             <li>Phien-wej, N., Giao, P.H., & Nutalaya, P. (2006). Land subsidence in Bangkok, Thailand. Engineering Geology, 82, 187-201.</li>
-                            <li>Ahmed, S., et al. (2024). Monitoring land subsidence: the challenges of producing knowledge and groundwater management indicators in the Bangkok metropolitan region...</li>
-                            <li>Morishita, Y., et al. (2020). LiCSBAS: An Open-Source InSAR Time Series Analysis Package... Remote Sensing, 12(3).</li>
-                            <li>เฉลิมพล ทับทิมทอง. (2567). การศึกษาปัญหาการเสียหายของท่อจ่ายน้ำ...</li>
+                            <li>Ahmed, S., et al. (2024). Monitoring land subsidence: the challenges of producing knowledge and groundwater management indicators in the Bangkok metropolitan region.</li>
+                            <li>Morishita, Y., et al. (2020). LiCSBAS: An Open-Source InSAR Time Series Analysis Package. Remote Sensing, 12(3).</li>
+                            <li>เฉลิมพล ทับทิมทอง. (2567). การศึกษาปัญหาการเสียหายของท่อจ่ายน้ำอันเนื่องจากการทรุดตัวของพื้นดิน กรุงเทพมหานคร.</li>
                         </ul>
                     </div>
                 </details>
@@ -230,15 +221,15 @@
                     <b class="watermark-title-desktop" style="color:#2c3e50; font-size:12px; margin:0;">🎓 แผนที่แนวโน้มการทรุดตัว (Subsidence Hotspot Map)</b>
                     <b class="watermark-title-mobile" style="color:#2c3e50; font-size:14px; margin:0;">🎓</b>
                     <button onclick="var el = document.getElementById('thesis-info'); el.style.display = (el.style.display === 'none') ? 'block' : 'none';" 
-                            style="border-radius: 50%; width: 22px; height: 22px; border: 1px solid #2980b9; background: #fff; color: #2980b9; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center;">ℹ️</button>
+                            style="border-radius: 50%; width: 22px; height: 22px; border: 1px solid #2980b9; background: #fff; color: #2980b9; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px;">ℹ️</button>
                 </div>
                 <div id="thesis-info" class="custom-panel watermark-info" style="display: none; position: absolute; bottom: 40px; font-size: 10px; color: #333; line-height: 1.5;">
-                    <b>แผนที่นี้เป็นส่วนหนึ่งของรายงานการศึกษา เรื่อง การวิเคราะห์แนวโน้มการทรุดตัว</b><br>
-                    ซึ่งเป็นปริญญานิพนธ์ส่วนหนึ่งของการศึกษาตามหลักสูตรปริญญาวิศวกรรม<br>
-                    <b>ผู้เขียน:</b> นางสาวกมลวรรณ วงศ์อำมาตย์, นายพีรพงศ์ จอมจุมพลภา<br>
+                    <b>แผนที่นี้เป็นส่วนหนึ่งของรายงานการศึกษา เรื่อง การวิเคราะห์แนวโน้มการทรุดตัว (Subsidence Trend Analysis)</b><br>
+                    ซึ่งเป็นปริญญานิพนธ์ส่วนหนึ่งของการศึกษาตามหลักสูตรปริญญาวิศวกรรมศาสตรบัณฑิต สาขาวิศวกรรมโยธา มหาวิทยาลัยศรีนครินทรวิโรฒ<br><br>
+                    <b>ผู้เขียน:</b> นางสาวกมลวรรณ วงศ์อำมาตย์, นายพีรพงศ์ จอมจุมพลภา, นางสาวมนฤทัย แสงสวัสดิ์<br>
                     <b>อาจารย์ที่ปรึกษา:</b> ผศ.ดร.ชาญชัย เพชรพงศ์พันธุ์<br><br>
                     <b>ข้อสงวนสิทธิ์ (Disclaimer):</b><br>
-                    ข้อมูลที่ปรากฏในแผนที่นี้เป็นผลลัพธ์จากการประมวลผลในรายงานการศึกษา
+                    ข้อมูลที่ปรากฏในแผนที่นี้เป็นผลลัพธ์จากการประมวลผลในรายงานการศึกษา ข้อมูลอาจมีข้อผิดพลาดหรือความไม่แม่นยำ ผู้ใช้ควรตรวจสอบข้อมูลกับแหล่งข้อมูลต้นฉบับก่อนการใช้งาน
                 </div>
             </div>
             
@@ -247,26 +238,26 @@
                 <div class="custom-panel disclaimer-desktop">
                     <b>System Information & Disclaimer:</b><br>
                     • Data Frame: Oct 2014 - Dec 2024<br>
-                    • Publish Date: 27 April 2026<br>
-                    • Warning: ข้อมูลนี้เป็นส่วนหนึ่งของรายงานการศึกษาเพื่อวิเคราะห์แนวโน้มการทรุดตัว
+                    • Publish Date: 28 April 2026<br>
+                    • Warning: ข้อมูลนี้เป็นส่วนหนึ่งของรายงานการศึกษา ไม่ใช่ข้อมูลราชการอย่างเป็นทางการ
                 </div>
                 
                 <div class="disclaimer-mobile">
                     <div style="background: rgba(255,255,255,0.96); padding: 8px 15px; border-radius: 20px; border: 1px solid #e74c3c; display: flex; align-items: center; gap: 10px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);">
-                        <b style="color:#e74c3c; font-size:12px; margin:0;">Disclaimer</b>
+                        <b style="color:#e74c3c; font-size:12px; margin:0;">⚠️ Disclaimer</b>
                         <button onclick="var el = document.getElementById('disc-info'); el.style.display = (el.style.display === 'none') ? 'block' : 'none';" 
-                                style="border-radius: 50%; width: 22px; height: 22px; border: 1px solid #e74c3c; background: #fff; color: #e74c3c; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center;">⚠️</button>
+                                style="border-radius: 50%; width: 22px; height: 22px; border: 1px solid #e74c3c; background: #fff; color: #e74c3c; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center;">ℹ️</button>
                     </div>
                     <div id="disc-info" class="custom-panel" style="display: none; position: absolute; bottom: 40px; right: 0; width: 250px; font-size: 10px; color: #555; line-height: 1.5;">
                         <b>System Information & Disclaimer:</b><br>
                         • Data Frame: Oct 2014 - Dec 2024<br>
-                        • Publish Date: 27 April 2026<br>
-                        • Warning: ข้อมูลนี้เป็นส่วนหนึ่งของรายงานการศึกษาเพื่อวิเคราะห์แนวโน้มการทรุดตัว
+                        • Publish Date: 28 April 2026<br>
+                        • Warning: ข้อมูลนี้เป็นส่วนหนึ่งของรายงานการศึกษา ไม่ใช่ข้อมูลราชการอย่างเป็นทางการ
                     </div>
                 </div>
             </div>
             
-    <div class="folium-map" id="map_5c3484fc4216cbe395dcb47336b41346"></div>
+    <div class="folium-map" id="map_d49bdf5707de88909c2aafbde385d2bc"></div>
            <style>
         /* สไตล์สวิตช์มินิมอล */
         .custom-switch { position: relative; display: inline-block; width: 34px; height: 18px; margin: 0; }
@@ -322,12 +313,9 @@
                 {
                     center: [13.75, 100.51],
                     crs: L.CRS.EPSG3857,
-                    ...{
-  "zoom": 11,
-  "zoomControl": true,
-  "preferCanvas": false,
-}
-
+                    zoom: 11,
+                    zoomControl: true,
+                    preferCanvas: false
                 }
             );
 
@@ -338,121 +326,20 @@
             var tile_layer_d76d6eee435062b2f9e60893373b20cd = L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
                 {
-  "minZoom": 0,
-  "maxZoom": 20,
-  "maxNativeZoom": 20,
-  "noWrap": false,
-  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCA",
-  "subdomains": "abcd",
-  "detectRetina": false,
-  "tms": false,
-  "opacity": 1,
-}
-
+                    minZoom: 0,
+                    maxZoom: 20,
+                    maxNativeZoom: 20,
+                    noWrap: false,
+                    attribution: "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors &copy; <a href=\"https://carto.com/attributions\">CARTO</a>",
+                    subdomains: "abcd",
+                    detectRetina: false,
+                    tms: false,
+                    opacity: 1
+                }
             );
         
     
             tile_layer_d76d6eee435062b2f9e60893373b20cd.addTo(map_5c3484fc4216cbe395dcb47336b41346);
         
-    
-    var color_map_fba11625f2f5a3597f7255cc4a51d5c3 = {};
-
-    
-    color_map_fba11625f2f5a3597f7255cc4a51d5c3.color = d3.scale.threshold()
-              .domain([0.0, 0.3557213261844966, 0.7114426523689932, 1.0671639785534899, 1.4228853047379864, 1.778606630922483, 2.1343279571069798, 2.490049283291476, 2.8457706094759727, 3.201491935660])
-              .range(['#2ecc71ff', '#2ecc71ff', '#2ecc71ff', '#2ecc71ff', '#2ecc71ff', '#2ecc71ff', '#2ecc71ff', '#2ecc71ff', '#2ecc71ff', '#2ecc71ff', '#2ecc71ff', '#2ecc71ff', '#2ecc71ff', '#2ecc71ff'])
-    
-
-    color_map_fba11625f2f5a3597f7255cc4a51d5c3.x = d3.scale.linear()
-              .domain([0.0, 177.5049417660638])
-              .range([0, 450 - 50]);
-
-    color_map_fba11625f2f5a3597f7255cc4a51d5c3.legend = L.control({position: 'topright'});
-    color_map_fba11625f2f5a3597f7255cc4a51d5c3.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
-    color_map_fba11625f2f5a3597f7255cc4a51d5c3.legend.addTo(map_5c3484fc4216cbe395dcb47336b41346);
-
-    color_map_fba11625f2f5a3597f7255cc4a51d5c3.xAxis = d3.svg.axis()
-        .scale(color_map_fba11625f2f5a3597f7255cc4a51d5c3.x)
-        .orient("top")
-        .tickSize(1)
-        .tickValues([0.0, 50.0, 100.0, 177.5049417660638]);
-
-    color_map_fba11625f2f5a3597f7255cc4a51d5c3.svg = d3.select(".legend.leaflet-control").append("svg")
-        .attr("id", 'legend')
-        .attr("width", 450)
-        .attr("height", 40);
-
-    color_map_fba11625f2f5a3597f7255cc4a51d5c3.g = color_map_fba11625f2f5a3597f7255cc4a51d5c3.svg.append("g")
-        .attr("class", "key")
-        .attr("fill", "black")
-        .attr("transform", "translate(25,16)");
-
-    color_map_fba11625f2f5a3597f7255cc4a51d5c3.g.selectAll("rect")
-        .data(color_map_fba11625f2f5a3597f7255cc4a51d5c3.color.range().map(function(d, i) {
-          return {
-            x0: i ? color_map_fba11625f2f5a3597f7255cc4a51d5c3.x(color_map_fba11625f2f5a3597f7255cc4a51d5c3.color.domain()[i - 1]) : color_map_fba11625f2f5a3597f7255cc4a51d5c3.x.range()[0],
-            x1: i < color_map_fba11625f2f5a3597f7255cc4a51d5c3.color.domain().length ? color_map_fba11625f2f5a3597f7255cc4a51d5c3.x(color_map_fba11625f2f5a3597f7255cc4a51d5c3.color.domain()[i]) : color_map_fba11625f2f5a3597f7255cc4a51d5c3.x.range()[1],
-            z: d
-          };
-        }))
-      .enter().append("rect")
-        .attr("height", 40 - 30)
-        .attr("x", function(d) { return d.x0; })
-        .attr("width", function(d) { return d.x1 - d.x0; })
-        .style("fill", function(d) { return d.z; });
-
-    color_map_fba11625f2f5a3597f7255cc4a51d5c3.g.call(color_map_fba11625f2f5a3597f7255cc4a51d5c3.xAxis).append("text")
-        .attr("class", "caption")
-        .attr("y", 21)
-        .attr("fill", "black")
-        .text("Absolute Cumulative Subsidence (mm) | Thresholds: 50, 100");
-    
-            var heat_map_81f492161e69984aba7f5b1910c8b39c = L.heatLayer(
-                [[13.7987503, 100.5185, 56.23811752061091], [13.8500003, 100.8035333, 128.60978776673517], [13.854967, 100.58765, 69.85091206785633], [13.854967, 100.58765, 69.85091206785633], [13.859]]
-                ,
-                {
-  "minOpacity": 0.3,
-  "maxZoom": 18,
-  "radius": 20,
-  "blur": 15,
-}
-            );
-        
-    
-            heat_map_81f492161e69984aba7f5b1910c8b39c.addTo(map_5c3484fc4216cbe395dcb47336b41346);
-        
-    
-            var circle_marker_72b5d87ab7ce1030bf863c9981771542 = L.circleMarker(
-                [13.7987503, 100.5185],
-                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
-            ).addTo(map_5c3484fc4216cbe395dcb47336b41346);
-        
-    
-        var popup_75214ba03b84ae5e890d46f9572fa567 = L.popup({
-  "maxWidth": "100%",
-});
-
-        
-            
-                var html_344f9283a36d3ce18f5041d9b31179d3 = $(`<div id="html_344f9283a36d3ce18f5041d9b31179d3" style="width: 100.0%; height: 100.0%;">                 <div class='popup-container'>Sample popup</div></div>`)[0];
-                popup_75214ba03b84ae5e890d46f9572fa567.setContent(html_344f9283a36d3ce18f5041d9b31179d3);
-            
-        
-
-        circle_marker_72b5d87ab7ce1030bf863c9981771542.bindPopup(popup_75214ba03b84ae5e890d46f9572fa567)
-        ;
-
-        
-    
-    
-            circle_marker_72b5d87ab7ce1030bf863c9981771542.bindTooltip(
-                `<div>
-                     Station: 02001
-                 </div>`,
-                {
-  "permanent": true,
-  "direction": "top",
-  "className": "station-label",
-  "sticky": true,
-}
-            );
+</script>
+</html>
