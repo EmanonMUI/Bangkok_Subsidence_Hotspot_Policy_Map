@@ -180,7 +180,7 @@
                     <b>แผนที่นี้เป็นส่วนหนึ่งของรายงานการศึกษา เรื่อง การวิเคราะห์แนวโน้มการทรุดตัวของแผ่นดินในกรุงเทพมหานครด้วยวิธี InSAR ร่วมกับข้อมูลการใช้น้ำบาดาล</b><br>
                     ซึ่งเป็นปริญญานิพนธ์ส่วนหนึ่งของการศึกษาตามหลักสูตรปริญญาวิศวกรรมศาสตรบัณฑิต สาขาวิชาวิศวกรรมโยธา คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี ปีการศึกษา 2568<br><br>
                     <b>ผู้เขียน:</b> นางสาวกมลวรรณ วงศ์อำมาตย์, นายพีรพงศ์ จอมจุมพลภา, นางสาวรัตติยา สุขปลั่ง<br>
-                    <b>อาจารย์ที่ปรึกษา:</b> ผศ.ดร.ชาญชัย เพชรพงศ์พันธุ์<br>
+                    <b>อาจารย์ที่ปรึกษา:</b> ผศ.ดร.ชาญชัย เพชรพงศ์พันธุ์<br><br>
                         <b>ข้อสงวนสิทธิ์ (Disclaimer):</b>
 
 ข้อมูลที่ปรากฏในแผนที่นี้เป็นผลลัพธ์จากการประมวลผลในรายงานการศึกษาเชิงวิชาการ โดยใช้ข้อมูลจากดาวเทียม InSAR ร่วมกับแบบจำลอง Machine Learning ซึ่งอาจมีความคลาดเคลื่อนตามสภาวะแวดล้อมและข้อจำกัดทางเทคนิค ข้อมูล InSAR เป็นการวัดค่าที่ผิวดินระดับพิกเซล (100x100 ม.) และแบบจำลองเป็นการทำนายแนวโน้มจากตัวแปรน้ำบาดาลและชั้นดินเพียงบางส่วน ผลลัพธ์นี้มีวัตถุประสงค์เพื่อใช้ในการเฝ้าระวังและวิเคราะห์แนวโน้มในภาพรวมเท่านั้น การนำข้อมูลไปอ้างอิงเพื่อการตัดสินใจหรือการออกแบบทางวิศวกรรมในระดับรายอาคาร ควรอยู่ภายใต้วิจารณญาณของผู้ใช้งานและควรผ่านการตรวจสอบภาคสนาม (In-situ Testing) ตามหลักวิศวกรรมปฐพีกลศาสตร์ คณะผู้จัดทำไม่ขอรับผิดชอบต่อความเสียหายใดๆ ที่อาจเกิดขึ้นจากการนำข้อมูลไปใช้งานต่อในทุกกรณี
@@ -213,7 +213,44 @@
             
     
             <div class="folium-map" id="map_d49bdf5707de88909c2aafbde385d2bc" ></div>
-        
+<div style="position: fixed; bottom: 70px; left: 20px; z-index: 9999;">
+        <button onclick="toggleStationLabels()" 
+                style="background: rgba(255,255,255,0.96); 
+                       border: 1px solid #bdc3c7; 
+                       border-radius: 20px; 
+                       padding: 8px 15px; 
+                       font-size: 12px; 
+                       cursor: pointer; 
+                       box-shadow: 2px 2px 5px rgba(0,0,0,0.1); 
+                       font-weight: bold; 
+                       color: #2c3e50; 
+                       display: flex; 
+                       align-items: center; 
+                       gap: 5px;">
+            🏷️ <span id="label-status">Hide label</span>
+        </button>
+    </div>
+
+    <script>
+        function toggleStationLabels() {
+            // ดึงองค์ประกอบทั้งหมดที่มี Class .station-label
+            var labels = document.querySelectorAll('.station-label');
+            var statusText = document.getElementById('label-status');
+            
+            labels.forEach(function(label) {
+                // ถ้าปัจจุบันซ่อนอยู่ให้แสดง ถ้าแสดงอยู่ให้ซ่อน
+                if (label.style.display === 'none') {
+                    label.style.display = 'block';
+                    statusText.innerText = "Hide label";
+                } else {
+                    label.style.display = 'none';
+                    statusText.innerText = "Show label";
+                }
+            });
+        }
+    </script>
+  
+                            
 </body>
 <script>
     
